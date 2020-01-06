@@ -20,7 +20,7 @@ To simulate the execution follow these simle insructions:
 
 ## Compile .proto file
 
-* If you make any changes to the proto file, compile it with these command.
+* If you make any changes to the proto file, compile it with this command.
 
     ```console
     cd byzq
