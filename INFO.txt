@@ -1,0 +1,51 @@
+1)RUNNING ONE SERVER WITH THE KEY(Only use for single server configuration)
+go run main.go -key keys/server
+
+2)RUNNING ONE SERVER WITH THE KEY AND THE PORT(Default)
+go run main.go -port=8081 -key keys/server
+
+3)KILLING THE SERVER:
+ctrl+c
+
+4) RUNNING A CLIENT(Default)
+go run main.go -port=8080
+
+5)IMPORTING A PACKAGE 
+"github.com/relab/gorums/cmd/demo/api"
+
+6) COMPILE PROTO
+(not working)protoc -I=$(GOPATH)/src/:. --gorums_out=plugins=grpc+gorums:. byzq.proto
+protoc byzq.proto --gorums_out=plugins=grpc+gorums:.
+----------------------------------------------------------------
+USEFULL SHORTCUTS VSC
+
+1)COPY THE WHOLE LINE
+"ctrl" + "c"
+2) ZOOM IN
+"ctrl" + "+" (890+\)
+3)ZOOM OUT
+"ctr" + "-"
+4)COMMENT OUT 
+"ctrl" + "'" 
+-----------------------------------------------------------------
+RUNNING TESTS
+cd dev
+go test -v // run all tests
+$ go test -run NameOfTest
+--------------------------------------------------------------------
+GO HINTS
+
+go env - check GOPATH and GOOROOT
+--------------------------------------------------------------------
+Implement the api in the following order
+1) specify service and message in .proto file
+2) compile the pb.go file (That is the only file that needs to be compiled)
+2) add the api in the server part
+3) use the servers api in the client
+
+--------------------------------------------------------------------
+IMPORTS
+1) server.go and client.go both must have import the package byzq
+	"github.com/relab/gorums/cmd/byzq-master/byzq"
+	where it will have acces to pb.go file and other methods that compose 
+	the byzq package

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package byzq;
+
+import "google/protobuf/gorums.proto";
+import "gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.equal_all) = true;
+
+service Storage {
+	rpc Write(Value) returns (WriteResponse){
+		option (gorums.qc) = true;
+		option (gorums.qf_with_req) = true;
+	}
+	rpc EchoWrite(Value) returns (WriteResponse){
+		option (gorums.qc) = true;
+		option (gorums.qf_with_req) = true;
+	}
+	rpc EchoEchoWrite(Value) returns (WriteResponse){
+		option (gorums.qc) = true;
+		option (gorums.qf_with_req) = true;
+	}
+}
+
+// [Value, requestID, ts, val, signature]
+// [Write, wts, val, signature]
+message Value {
+	Content c = 1;
+	bytes signatureR = 2;
+	bytes signatureS = 3;
+} 
+
+message Content {
+	string key = 1;
+	int64 timestamp = 2;
+	string value	= 3;
+	bool echowrite = 4;
+	int64 port = 5;
+}
+
+
+// [Ack, ts]
+message WriteResponse {
+	int64 timestamp = 1;
+	int64 port = 2;
+}
