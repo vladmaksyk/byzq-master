@@ -1,4 +1,4 @@
-To simulate the execution follow these simle insructions:
+To simulate the execution follow these simple insructions:
 ----------------------------------------------------------
 
 * Run four servers as four different processes:
