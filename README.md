@@ -15,7 +15,7 @@ To simulate the execution follow these simple insructions:
 
     ```console
     cd byzclient
-    go run main.go -port=8080 numReq=100
+    go run main.go -port=8080 -numReq=100
     ```
 
 ## Compile .proto file
